@@ -1,0 +1,77 @@
+body {
+    background-color: #1a1a33;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  .App {
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 200px;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } 
+  
+  .App-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  h1 {
+    margin: 0;
+    padding: 100px 0;
+    font-size: 32px;
+    font-weight: bold;
+  }
+  
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  input,
+  select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  button {
+    padding: 10px 20px !important;
+    background-color: #4CAF50 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .button-container button:not(:last-child) {
+    margin-right: 50px;
+  }
+  
+  button:hover {
+    background-color: #005fa3;
+  }
