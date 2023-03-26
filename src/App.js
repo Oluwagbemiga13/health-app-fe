@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import './styles.css';
 
-function SystemSelect({ systems, onSelect }) {
+function OrganSelect({ organs, onSelect }) {
   return (
     <div>
       <label>
-        System:
+        Organ:
         <select onChange={(e) => onSelect(e.target.value)}>
-          {systems.map((system) => (
-            <option key={system} value={system}>
-              {system}
+          {organs.map((organ) => (
+            <option key={organ.id} value={organ.name}>
+              {organ.name}
             </option>
           ))}
         </select>
@@ -26,20 +26,26 @@ function handleGet() {
 }
 
 function App() {
-  const [system, setSystem] = useState('Respiratory');
+  const [organs, setOrgans] = useState([
+    { id: 1, name: 'Lungs' },
+    { id: 2, name: 'Heart' },
+  ]);
+  const [organ, setOrgan] = useState(organs[0].name);
   const [symptom, setSymptom] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = { system, symptom };
+    const selectedOrgan = organs.find((o) => o.name === organ);
+    const data = { organ: selectedOrgan, symptom };
     console.log(JSON.stringify(data));
   };
 
   const handlePost = (event) => {
     event.preventDefault();
+    const selectedOrgan = organs.find((o) => o.name === organ);
     const data = {
       name: symptom,
-      systems: [{ id: 1, name: system }],
+      organ: selectedOrgan,
       id: null // Initialize the id attribute to null
     };
     fetch('http://localhost:8080/api/symptom', {
@@ -59,11 +65,7 @@ function App() {
       <h1>My health app FE</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          System:
-          <select value={system} onChange={(event) => setSystem(event.target.value)}>
-            <option value="Respiratory">Respiratory</option>
-            <option value="Nervous">Nervous</option>
-          </select>
+          <OrganSelect organs={organs} onSelect={(selectedOrgan) => setOrgan(selectedOrgan)} />
         </label>
         <br />
         <label>
